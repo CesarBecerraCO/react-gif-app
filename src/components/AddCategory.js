@@ -1,21 +1,26 @@
 import React, {useState} from 'react'
+import PropTypes from "prop-types";
 
-export const AddCategory = () => {
-  //Necesito saber lo que la persona está escribiendo en todo momento,
-  //para eso el useSate, en este caso inputValue tendrá el texto que quiero
-  const [inputValue, setInputValue] = useState('Nueva categoria');
-  const handleInput = (e) => {
+export const AddCategory = ({setCategories}) => {
+  const [inputValue, setInputValue] = useState('Samuray X');
+  const handleInput = (e) => { //***** Handle *****
     setInputValue( e.target.value );
   }
-  //Ahora quiero controlar cuando la persona hace enter
-  const handleSubmit = (e) =>{
-    e.preventDefault(); //Prevenir el refresco del navegador, eso ya no se usa!
-    console.log('Submit hecho!');
+  const handleSubmit = (e) =>{ //***** Handle *****
+    e.preventDefault(); //Prevenir el refresco del navegador
+    if ( inputValue.trim().length > 2 ) {
+      setCategories( cats => [inputValue, ...cats] );
+      setInputValue('');
+      console.log('Submit hecho!');
+    }
   }
   return (
     <form onSubmit={handleSubmit}>
-      <h4>{inputValue}</h4>
       <input type="text" value={inputValue} onChange={handleInput} />
     </form>
   )
+}
+
+AddCategory.propTypes = { //Exigir setCategories como función!!!
+  setCategories: PropTypes.func.isRequired,
 }
