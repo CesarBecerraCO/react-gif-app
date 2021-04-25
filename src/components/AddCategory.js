@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import PropTypes from "prop-types";
 
 export const AddCategory = ({setCategories}) => {
-  const [inputValue, setInputValue] = useState('Samuray X');
+  const [inputValue, setInputValue] = useState('Power Grid');
   const handleInput = (e) => { //***** Handle *****
     setInputValue( e.target.value );
   }
