@@ -6,7 +6,7 @@ export const GiftExpertApp = () => {
   const [categories, setCategories] = useState(['One Punch']);
   return (
     <div>
-      <h2>GiftExpertApp</h2>
+      <h2>Gif Expert App</h2>
       <AddCategory setCategories={setCategories}/><hr/>
       <ol>
         { categories.map(cat => (<GifGrid key={cat} category={cat} />)) }
